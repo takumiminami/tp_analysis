@@ -6,7 +6,7 @@ __year__ = "2024"
 __date__ = "25 April"
 __credits__ = ["Takumi Minami"]
 __license__ = "Private Domain"
-__version__ = "3.2.12"
+__version__ = "3.3.0"
 __maintainer__ = "Takumi Minami"
 __email__ = "takumi.minami@eie.eng.osaka-u.ac.jp"
 __copyright__ = "Copyright (C), {}, {}".format(__year__, __author__)
@@ -30,6 +30,7 @@ sys.path.append(os.getcwd())
 
 """
 Updates
+3.3.0   First version uploaded in Github
 3.2.12  Modified the change in 3.2.11
 3.2.11  Change the definition of the vertical value of spectra from sum to average
 3.2.10  Apply to change the color scale of the parabola
