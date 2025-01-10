@@ -89,5 +89,5 @@ center_ave = [np.average(centers_x), np.average(centers_y)]
 print("")
 print("average of center : [{}, {}]".format(center_ave[0], center_ave[1]))
 fw.write("average\n")
-fw.write("{}\n".format(center_ave))
+fw.write("[{}, {}]\n".format(center_ave[0], center_ave[1]))
 
