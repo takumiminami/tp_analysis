@@ -1,6 +1,6 @@
 # tp_analysis
 The analysis code for Thomson parabola spectrometer (TPS).
-The approval file is an image data obtained with IP, MCP, or some detector in TPS.
+The approval file is an image data obtained with IP, MCP, e.t.c.
 
 ## Lisence
 Contact to the author (T. Minami, takumi.minami@eie.eng.osaka-u.ac.jp).
