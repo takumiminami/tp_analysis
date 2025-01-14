@@ -21,33 +21,58 @@ plt.rcParams["xtick.major.size"] = 7
 plt.rcParams["ytick.major.size"] = 7
 plt.rcParams["legend.frameon"] = False
 
+
 strdn = 1  # 3.14e-8
 # ~1.5m, ~300um
 
-sys.path.append("../")
-from input import decimate_image
+ion_names = [
+             "proton",
+             "C6+(O8+)",
+             ]
 
+original_file_extension = "gel"
+
+# ----- initialization ----- #
+from input import decimate_image
 if decimate_image:
     from input import cut_left_top, cut_right_down
 
 cur_dir = os.getcwd()
-original_fname = cur_dir.split("/")[-1][8:]
-file_list = glob.glob(cur_dir + "/sp_proton.txt")
-file_list.append(cur_dir + "/sp_C6+(O8+).txt")
-file_list.sort()
+file_list = ["sp_" + ions + ".txt" for ions in ion_names]
 
 ekmax = open("./max_ek.log", mode="w")
+
+
+# ----- functions ----- #
+def find_original():
+    original_fname = cur_dir.split("/")[-1][8:]
+#    if "]" == original_fname[-1]:
+#        original_fname = original_fname[:-1]
+
+#    original = glob.glob("../{}*".format(original_fname))
+#    if (1 < len(original)):
+#        for fn in original:
+#            if fn[-4:] == "." + original_file_extension:
+#                original = fn
+#                break
+    _original = "../" + original_fname + "." + original_file_extension
+
+    return _original
+
+
+# ----- main ----- #
+
+original = find_original()
 
 for n, f in enumerate(file_list):
     f_name = os.path.splitext(os.path.basename(f))[0]
     ion_name = f_name[3:]
     data = np.genfromtxt(f, skip_header=1)
-    original = glob.glob("../{}*".format(original_fname))[0]
 
     if ion_name == "proton":
-        ek_max = 10   # maximum but slightly below the cutoff
+        ek_max = 30   # maximum but slightly below the cutoff
         # limit = 30
-        ek_min = 3.83   # this should be exactly minimum number to analyse 
+        ek_min = 0.8   # this should be exactly minimum energy to be normalized 
     elif ion_name == "C6+(O8+)":
         ek_max = 60
         # limit = 30
@@ -91,8 +116,8 @@ for n, f in enumerate(file_list):
     np.savetxt("fn_{}.txt".format(ion_name), save_data, header="Ek [MeV]  fn [/MeV]  ek_err [MeV]  fn_err [/MeV]")
 
     fig, ax = plt.subplots()
-    ax.errorbar(save_data[:, 0], save_data[:, 1], xerr=save_data[:, 2], yerr=save_data[:, 3], capsize=1.8,
-                elinewidth=0.5)
+#    ax.errorbar(save_data[:, 0], save_data[:, 1], xerr=save_data[:, 2], yerr=save_data[:, 3], capsize=1.8, elinewidth=0.5)
+    ax.errorbar(save_data[:, 0], save_data[:, 1], yerr=save_data[:, 3], capsize=1.8, elinewidth=0.5)
     ax.set_yscale("log")
     ax.set_xlabel("$E_k$ [MeV]")
     if strdn == 1:
