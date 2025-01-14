@@ -2,8 +2,8 @@
 # -*- coding:utf-8 -*-
 
 __author__ = "Takumi Minami"
-__year__ = "2024"
-__date__ = "6 October"
+__year__ = "2025"
+__date__ = "14 January"
 __credits__ = ["Takumi Minami"]
 __license__ = "Private Domain"
 __version__ = "3.4.1"
