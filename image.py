@@ -19,9 +19,10 @@ from input import *
 from configurations import save_dir_prefix, mass_u, coulomb_u, alpha, init_rot_for_fitting, cache_flag, scale_bar_flag_,\
     parabola_ext, flip_flag, save_raw_parabola_, fit_ion_nmqc, img_scale_params
 
-# plt.rcParams['mathtext.fontset'] = 'stix'
+if platform.system() == "Darwin":
+    plt.rcParams["font.family"] = "Helvetica"
+    plt.rcParams["pcolor.shading"] = "auto"
 plt.rcParams["font.size"] = 15
-plt.rcParams['font.family'] = 'Helvetica'
 plt.rcParams["xtick.direction"] = "out"
 plt.rcParams["ytick.direction"] = "out"
 

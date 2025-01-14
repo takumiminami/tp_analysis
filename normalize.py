@@ -12,8 +12,6 @@ import platform
 if platform.system() == "Darwin":
     plt.rcParams["font.family"] = "Helvetica"
     plt.rcParams["pcolor.shading"] = "auto"
-else:
-    plt.rcParams["font.family"] = "Arial"
 plt.rcParams["font.size"] = 20
 plt.rcParams["xtick.top"] = True
 plt.rcParams["ytick.right"] = True

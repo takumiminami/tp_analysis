@@ -13,15 +13,15 @@ from functions import ek_to_x, x_to_ek, calc_ek_stddev
 from image import Image
 from input import *
 
-# plt.rcParams['mathtext.fontset'] = 'stix'
-plt.rcParams["font.family"] = "Helvetica"
+if platform.system() == "Darwin":
+    plt.rcParams["font.family"] = "Helvetica"
+    plt.rcParams["pcolor.shading"] = "auto"
 plt.rcParams["font.size"] = 15
 plt.rcParams["xtick.top"] = True
 plt.rcParams["ytick.right"] = True
 plt.rcParams["xtick.major.size"] = 7
 plt.rcParams["ytick.major.size"] = 7
 plt.rcParams["legend.frameon"] = False
-plt.rcParams["pcolor.shading"] = "auto"
 
 
 class Spectra:
