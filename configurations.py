@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-import sys
 
-from input import L, D, V, B, d, energy_log_flag, fit_flag, save_fig_ext
+import sys
 import numpy as np
+
+from main import input_fname
+exec("from {} import L, D, V, B, d, energy_log_flag, fit_flag, save_fig_ext".format(input_fname))
 
 
 # ----- function ----- #

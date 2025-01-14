@@ -2,12 +2,12 @@
 # -*- coding:utf-8 -*-
 
 import sys
-
 import numpy as np
-from scipy import optimize
+from scipy.optimize import fsolve
 from copy import deepcopy as dc
 from configurations import pn_term, c_0
-from input import B, L, D
+from main import input_fname
+exec("from {} import B, L, D".format(input_fname))
 
 
 def parabola(x_, a_):
@@ -57,7 +57,7 @@ def ek_to_x(ek_, mass_, charge_):
 
 
 def x_to_ek(x_, mass_, charge_):
-    larmor = np.array([optimize.fsolve(calc_larmor, x0=1000, args=x__) for x__ in x_])[:, 0]
+    larmor = np.array([fsolve(calc_larmor, x0=1000, args=x__) for x__ in x_])[:, 0]
     gamma = np.sqrt(1 + np.power(larmor * charge_ * B / mass_ / c_0, 2))
     ek_ = gamma_to_ek(gamma, mass_)
     return ek_

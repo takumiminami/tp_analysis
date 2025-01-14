@@ -31,6 +31,7 @@ sys.path.append(os.getcwd())
 """
 Updates
 3.4.1   Add a function to set the Q/M values or ion name to indicate with vertical lines in the Q/M histogram
+        Arrow to input from arbitrary named files
 3.4.0   Omit ek-error from the plot
         Refine normalized.py in structure
 3.3.0   First version uploaded in Github

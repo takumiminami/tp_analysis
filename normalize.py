@@ -31,9 +31,10 @@ ion_names = [
 original_file_extension = "gel"
 
 # ----- initialization ----- #
-from input import decimate_image
+from main import input_fname
+exec("from {} import decimate_image".format(input_fname))
 if decimate_image:
-    from input import cut_left_top, cut_right_down
+    exec("from {} import cut_left_top, cut_right_down".format(input_fname))
 
 cur_dir = os.getcwd()
 file_list = ["sp_" + ions + ".txt" for ions in ion_names]

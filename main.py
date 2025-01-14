@@ -2,14 +2,27 @@
 # -*- coding:utf-8 -*-
 
 import __init__
-import shutil, os
-from input import *
-from image import Image, define_coef_and_angle
-from spectra import Spectra, get_value, get_qm_hist
-from configurations import scan_QM, no_spectra_flag
+import shutil, os, sys
 
+args = sys.argv
+global input_fname
+try:
+    input_fname = args[1]
+    if input_fname[-3] == ".py":
+        input_fname = input_fname[:-3]
+except IndexError:
+    input_fname = "input"
 
 if __name__ == "__main__":
+    try:
+        exec("from {} import *".format(input_fname))
+    except ModuleNotFoundError:
+        print("Not found the input file named '{}'.".format(input_fname))
+        sys.exit()
+    from image import Image, define_coef_and_angle
+    from spectra import Spectra, get_value, get_qm_hist
+    from configurations import scan_QM, no_spectra_flag
+
     for file in file_names:
         print("-------------------------------------------------")
         print("Starting to analyze {}".format(file))

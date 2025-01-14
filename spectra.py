@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-import datetime
-import sys, os
 
 import matplotlib.pyplot as plt
 import numpy as np
 from numpy import log10
-import tqdm
+import tqdm, datetime, sys, os, platform
 
 from configurations import coulomb_u, mass_u, flip_flag #, save_spectra_
 from functions import ek_to_x, x_to_ek, calc_ek_stddev
 from image import Image
-from input import *
+from main import input_fname
+exec("from {} import *".format(input_fname))
 
 if platform.system() == "Darwin":
     plt.rcParams["font.family"] = "Helvetica"

@@ -5,7 +5,8 @@
 Not be used from version 3.2.0
 """
 
-from input import *
+from main import input_fname
+exec("from {} import *".format(input_fname))
 from image import Image, define_coef_and_angle
 from spectra import Spectra, get_value, Histogram
 from configurations import scan_QM

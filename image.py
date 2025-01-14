@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 
-import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import platform, os, re, sys, glob, cv2, datetime
@@ -10,12 +8,13 @@ import platform, os, re, sys, glob, cv2, datetime
 from copy import deepcopy as dc
 from datetime import datetime as dt
 from scipy.optimize import curve_fit
-from mpl_toolkits.axes_grid1.anchored_artists import AnchoredSizeBar
+# from mpl_toolkits.axes_grid1.anchored_artists import AnchoredSizeBar
 import matplotlib.font_manager as fm
 from matplotlib.colors import LogNorm, Normalize
 
+from main import input_fname
+exec("from {} import *".format(input_fname))
 from functions import parabola, rot_parabola, rotation_matrix, calc_stddev, ek_to_x
-from input import *
 from configurations import save_dir_prefix, mass_u, coulomb_u, alpha, init_rot_for_fitting, cache_flag, scale_bar_flag_,\
     parabola_ext, flip_flag, save_raw_parabola_, fit_ion_nmqc, img_scale_params
 
