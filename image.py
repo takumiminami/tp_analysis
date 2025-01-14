@@ -150,10 +150,11 @@ class Image:
         return self.data.item[X_, Y_]
 
     def add_scale(self):
-        fontprops = fm.FontProperties(size=scale_bar["fontsize"])
-        bar_length = int(scale_bar["length"] / res)
-        position = scale_bar["position"]
-        length_digit = int("{:e}".format(scale_bar["length"])[-3:])/3
+        from configurations import scale_bar_conf
+        fontprops = fm.FontProperties(size=scale_bar_conf["fontsize"])
+        bar_length = int(scale_bar_conf["length"] / res)
+        position = scale_bar_conf["position"]
+        length_digit = int("{:e}".format(scale_bar_conf["length"])[-3:])/3
         if (length_digit < 1) & (length_digit >= 0):
             length_order = 1
             length_prefix = "m"
@@ -166,15 +167,15 @@ class Image:
         else:
             print("Undefined range of scale bar.")
             sys.exit()
-        label = "{}".format(int(scale_bar["length"] / length_order)) + " " + length_prefix
+        label = "{}".format(int(scale_bar_conf["length"] / length_order)) + " " + length_prefix
         """
         scalebar = AnchoredSizeBar(self.ax.transData,
                                    bar_length, 
                                    label, 
                                    loc=10, 
                                    frameon=False,
-                                   size_vertical=scale_bar["width"], 
-                                   color=scale_bar["color"],
+                                   size_vertical=scale_bar_conf["width"], 
+                                   color=scale_bar_conf["color"],
                                    fontproperties=fontprops, 
                                    pad=0.1,
                                    bbox_transform=self.ax.transData, 
@@ -182,40 +183,41 @@ class Image:
                                    )
         self.ax.add_artist(scalebar)
         """
-        if scale_bar["rotation"] == "horizontal":
+        if scale_bar_conf["rotation"] == "horizontal":
             self.ax.hlines(y=position[1], 
                            xmin=position[0], 
                            xmax=position[0] + bar_length, 
-                           lw=scale_bar["width"], 
-                           color=scale_bar["color"],
+                           lw=scale_bar_conf["width"], 
+                           color=scale_bar_conf["color"],
                            )
             self.ax.text(x=position[0] + int(bar_length/2), 
-                         y=position[1] + int(scale_bar["fontsize"]/2), 
+                         y=position[1] + int(scale_bar_conf["fontsize"]/2), 
                          s=label, 
-                         color=scale_bar["color"],
-                         fontsize=scale_bar["fontsize"], 
-                         rotation=scale_bar["rotation"], 
+                         color=scale_bar_conf["color"],
+                         fontsize=scale_bar_conf["fontsize"], 
+                         rotation=scale_bar_conf["rotation"], 
                          horizontalalignment="center", 
                          verticalalignment="top",
                          )
-        elif scale_bar["rotation"] == "vertical":
+        elif scale_bar_conf["rotation"] == "vertical":
             self.ax.vlines(x=position[0],
                            ymin=position[1],
                            ymax=position[1] + bar_length, 
-                           lw=scale_bar["width"], 
-                           color=scale_bar["color"],
+                           lw=scale_bar_conf["width"], 
+                           color=scale_bar_conf["color"],
                            )
-            self.ax.text(x=position[0] + int(scale_bar["fontsize"]/2),
+            self.ax.text(x=position[0] + int(scale_bar_conf["fontsize"]/2),
                          y=position[1] + int(bar_length/2),
                          s=label, 
-                         color=scale_bar["color"],
-                         fontsize=scale_bar["fontsize"], 
-                         rotation=scale_bar["rotation"], 
+                         color=scale_bar_conf["color"],
+                         fontsize=scale_bar_conf["fontsize"], 
+                         rotation=scale_bar_conf["rotation"], 
                          horizontalalignment="left", 
                          verticalalignment="center",
                          )
 
     def add_ek_axis(self):
+        from configurations import ek_indicate_flag, ek_indicate_offset_XY, ek_indicate_fontsize_ 
         for number in range(number_of_axis):
             ek_axis = eval("ek_axis_{}".format(number+1))
             ek_j_ = np.array(ek_axis["ek_mev"]) * coulomb_u * 1e6
@@ -249,6 +251,15 @@ class Image:
                            color=ek_axis["color"], 
                            lw=ek_axis["linewidth"],
                            )
+            if ek_indicate_flag:
+                for _n, _ek_mev in enumerate(ek_axis["ek_mev"]):
+                    _text = "{}".format(_ek_mev)
+                    if flip_flag:   
+                        _indicate_x = XY_axis_[_n, 1]-ek_indicate_offset_XY[1]
+                    else:
+                        _indicate_x = XY_axis_[_n, 1]+ek_indicate_offset_XY[1]
+                    _indicate_y = XY_axis_[_n, 0]-ek_indicate_offset_XY[0]
+                    self.ax.annotate(_text, xy=(_indicate_x, _indicate_y), xycoords="data", fontsize=ek_indicate_fontsize_)
 
     def init_parabola(self):
         length_params = len(img_scale_params)
