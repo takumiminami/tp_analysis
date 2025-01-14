@@ -3,10 +3,10 @@
 
 __author__ = "Takumi Minami"
 __year__ = "2024"
-__date__ = "25 April"
+__date__ = "6 October"
 __credits__ = ["Takumi Minami"]
 __license__ = "Private Domain"
-__version__ = "3.3.0"
+__version__ = "3.4.1"
 __maintainer__ = "Takumi Minami"
 __email__ = "takumi.minami@eie.eng.osaka-u.ac.jp"
 __copyright__ = "Copyright (C), {}, {}".format(__year__, __author__)
@@ -30,6 +30,9 @@ sys.path.append(os.getcwd())
 
 """
 Updates
+3.4.1   Add a function to set the Q/M values or ion name to indicate with vertical lines in the Q/M histogram
+3.4.0   Omit ek-error from the plot
+        Refine normalized.py in structure
 3.3.0   First version uploaded in Github
 3.2.12  Modified the change in 3.2.11
 3.2.11  Change the definition of the vertical value of spectra from sum to average

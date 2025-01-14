@@ -86,6 +86,20 @@ if scan_QM:
     for n in range(1, 201):
         scan_ion_list.append(["Q{}_M200".format(n), mass_u * 200, coulomb_u * n, "scan"])
 
+    indication_QM_flag = try_import_flags("qm_indication_flag")
+    if indication_QM_flag:
+        indication_QM = try_import_flags("qm_indication")
+        if len(indication_QM) == 0:
+            indication_QM = [
+                {"mass":12, "charge":6}, 
+                {"mass":12, "charge":5}, 
+                {"mass":12, "charge":4}, 
+                {"mass":12, "charge":3}, 
+                {"mass":12, "charge":2}, 
+                {"mass":12, "charge":1}, 
+            ]
+
+
 # ----- output ----- #
 # save_spectra_ = try_import_flags("save_spectra")
 save_raw_parabola_ = try_import_flags("save_raw_parabola")

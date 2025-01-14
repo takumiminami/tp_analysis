@@ -107,7 +107,8 @@ class Spectra:
 #            ax.bar(ek_, self.value - self.bg_value, label="{}".format(self.name), alpha=0.5, width=dek_)
             ax.bar(ek_, self.value, label="{}".format(self.name), alpha=0.5, width=dek_)
 #            ax.errorbar(ek_, self.value - self.bg_value, xerr=ek_err_, yerr=yerr_, capsize=2, ls="None")
-            ax.errorbar(ek_, self.value, xerr=ek_err_, yerr=self.value_error, capsize=2, ls="None")
+#             ax.errorbar(ek_, self.value, xerr=ek_err_, yerr=self.value_error, capsize=2, ls="None")
+            ax.errorbar(ek_, self.value, yerr=self.value_error, capsize=2, ls="None")
 
             # coloring of maximum position
 #            ax.bar(ek_[index_], self.value[index_] - self.bg_value[index_], color="orange", width=dek_[index_])
@@ -115,10 +116,12 @@ class Spectra:
 
             # bar plot for background signals 
             ax.bar(ek_, self.bg_value, label="background", alpha=0.5, width=dek_, color="orange")  #label="{}".format(self.name), 
-            ax.errorbar(ek_, self.bg_value, xerr=ek_err_, yerr=self.bg_value_error, capsize=2, ls="None", color="orange")
+            # ax.errorbar(ek_, self.bg_value, xerr=ek_err_, yerr=self.bg_value_error, capsize=2, ls="None", color="orange")
+            ax.errorbar(ek_, self.bg_value, yerr=self.bg_value_error, capsize=2, ls="None", color="orange")
         else:
             ax.bar(ek_, self.value, label="{}".format(self.name), alpha=0.5, width=dek_)
-            ax.errorbar(ek_, self.value, xerr=ek_err_, yerr=self.value_error, capsize=2, ls="None")
+            # ax.errorbar(ek_, self.value, xerr=ek_err_, yerr=self.value_error, capsize=2, ls="None")
+            ax.errorbar(ek_, self.value, yerr=self.value_error, capsize=2, ls="None")
         ax.set_xlabel(r"$E_k$ [eV]")
         ax.set_ylabel(r"count []")
         ax.set_xscale("log")
@@ -162,12 +165,18 @@ class Histogram:
         ax.set_xlabel(r"$Q/M$ []")
         ax.set_ylabel(r"$N$ [a.u.]")
 
-        ax.axvline(0.083, ls="-.", c="black", lw=1)
-        ax.axvline(0.167, ls="-.", c="black", lw=1)
-        ax.axvline(0.250, ls="-.", c="black", lw=1)
-        ax.axvline(0.333, ls="-.", c="black", lw=1)
-        ax.axvline(0.416, ls="-.", c="black", lw=1)
-        ax.axvline(0.500, ls="-.", c="black", lw=1)
+        from configurations import indication_QM_flag
+        if indication_QM_flag:
+            from configurations import indication_QM
+            for _n, _qm in enumerate(indication_QM):
+                ax.axvline(_qm["charge"]/_qm["mass"], ls="-.", c="black", lw=1)
+                try:
+                    _text = _qm["name"]
+                    _fontsizeqm = 9
+                except KeyError:
+                    _text = r"$\frac{" + "{}".format(_qm["charge"]) + "}{" + "{}".format(_qm["mass"]) + "}$"
+                    _fontsizeqm = 14
+                ax.annotate(_text, xy=(_qm["charge"]/_qm["mass"] + 0.005, np.max(self.number)*0.98), xycoords="data", fontsize=_fontsizeqm)
 
         if qm_log_flag:
             ax.set_yscale("log")

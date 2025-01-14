@@ -88,6 +88,13 @@ scan_qm_flag = False
 use_cache_qm_flag = False
 qm_log_flag = False
 
+qm_indication_flag = True
+if qm_indication_flag:
+    qm_indication = [
+#        {"mass":12, "charge":6}, 
+#        {"mass":16, "charge":7}, 
+    ]
+
 # ----- output ----- #
 dpi = 300
 raw_color = "viridis"
