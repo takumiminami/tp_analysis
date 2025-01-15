@@ -26,7 +26,7 @@ ion_names = [
 
 # ----- initialization ----- #
 input_fname = "previous_input"
-exec("from {} import decimate_image".format(input_fname))
+exec("from {} import decimate_image, file_names".format(input_fname))
 if decimate_image:
     exec("from {} import cut_left_top, cut_right_down".format(input_fname))
 
