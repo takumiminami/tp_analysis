@@ -770,7 +770,7 @@ def define_coef_and_angle(image: Image):
         else:
             status = "manual"
             print("Analyze with manually input parameters.")
-            angle_ = angle * np.pi / 180
+            angle_ = angle #* np.pi / 180
             from configurations import coefficient
             coef_ = coefficient
             np.savetxt(image.save_dir + "/wo_fitting_parameters.txt", np.array((coef_, angle_)),

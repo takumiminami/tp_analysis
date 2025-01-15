@@ -55,7 +55,7 @@ alpha_e = Le * (Le/2 + De)
 alpha = np.power(alpha_b, 2) / alpha_e
 
 if not fit_flag:
-    coefficient = try_import_params("foefficient", mass_u * E / coulomb_u / B**2 / alpha)
+    coefficient = try_import_params("coefficient", mass_u * E / coulomb_u / B**2 / alpha)
 
 
 # ----- analysis parameters ----- #
