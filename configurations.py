@@ -129,5 +129,6 @@ if ek_axis_on_parabola_flag:
     ek_indicate_flag = try_import_flags("ek_indicate")
     ek_indicate_offset_XY = try_import_params("ek_indicate_offset", [10, 10])
     ek_indicate_fontsize_ = try_import_params("ek_indicate_fontsize", 9)
+    ek_indicate_origin_offset_XY = try_import_params("ek_indicate_origin_offset", [0, 30])
 
 

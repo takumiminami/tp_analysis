@@ -134,12 +134,14 @@ if ek_axis_on_parabola:
     ek_indicate = True
     ek_indicate_offset = [10, 10]
     ek_indicate_fontsize = 9
+    ek_indicate_origin_offset = [-50, 30]
     ek_axis_1 = {"ek_mev": [0.4, 1, 5, 20],  # MeV (not MeV/u)
                  "mass": unit_mass * 1,
                  "charge": unit_charge * 1,
                  "color": "red",
                  "origin": [500, origin[1]],
                  "linewidth":2,
+                 "name":"proton",
                  }
     ek_axis_2 = {"ek_mev": [1/2, 5/2, 10/2],  # MeV (not MeV/u)
                  "mass": unit_mass * 2,

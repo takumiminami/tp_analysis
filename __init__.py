@@ -3,7 +3,7 @@
 
 __author__ = "Takumi Minami"
 __year__ = "2025"
-__date__ = "14 January"
+__date__ = "15 January"
 __credits__ = ["Takumi Minami"]
 __license__ = "Private Domain"
 __version__ = "3.4.1"
@@ -32,6 +32,7 @@ sys.path.append(os.getcwd())
 Updates
 3.4.1   Add a function to set the Q/M values or ion name to indicate with vertical lines in the Q/M histogram
         Arrow to input from arbitrary named files
+        Add a function to indicate the energy on the ek_axis in the parabola image
 3.4.0   Omit ek-error from the plot
         Refine normalized.py in structure
 3.3.0   First version uploaded in Github

@@ -8,7 +8,7 @@ args = sys.argv
 global input_fname
 try:
     input_fname = args[1]
-    if input_fname[-3] == ".py":
+    if input_fname[-3:] == ".py":
         input_fname = input_fname[:-3]
 except IndexError:
     input_fname = "input"
