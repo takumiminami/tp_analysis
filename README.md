@@ -9,30 +9,31 @@ Contact to the author (T. Minami, takumi.minami@eie.eng.osaka-u.ac.jp).
 Make an empty file in a directory with path (e.g. ```$ touch tpana``` in $HOME/bin). Then, copy and paste the following script in the file,
 ```
 #!/bin/bash
-set -Ceu
+set -Ce
 
-update_flag=$1
-script_dir=$PYTHONPATH
+argv=${1:-}
+script_dir=$HOME/bin
 
-if [ "$update_flag" = "update" ]; then
+if [ "$argv" = "update" ]; then
     cd $script_dir/tp_analysis && git pull  
     echo "update done"
-elif [ "$update_flag" = "install" ]; then
+elif [ "$argv" = "install" ]; then
     cd $script_dir && git clone https://github.com/takumiminami/tp_analysis.git
+elif [ "$argv" = "" ]; then
+    python3 $script_dir/tp_analysis/main.py
 else
-    echo "Not an approved command '"$update_flag"'"
-fi
-
-if [ $# -lt 1 ]; then
-    python3 $script_dir/main.py
+    python3 $script_dir/tp_analysis/main.py $argv 
 fi
 ```
 and set it executable (```$ chmod +x tpana```).
 You can install the code with ```$ tpana install``` if you already have the lisence.
+You can set an arbitrary installation directory by editing the variable ```script_dir```.
 
 ### Execution
 Put the data and input.py in a directory.
 Edit the input.py, then execute ```$ tpana``` in the directory.
+You can set an arbitrary file name of the input, e.g. laser_shot5.py, but you should follow the nomencalture rule of the python variables, for example, the use of a hyphen is prohibitted. 
+You can execute with ```$ tpana laser_shot5.py```.
 
 ### Update
 ```$ tpana update``` will automatically update the codes from github if there are available updates.
