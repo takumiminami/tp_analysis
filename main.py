@@ -7,9 +7,12 @@ import shutil, os, sys
 args = sys.argv
 global input_fname
 try:
-    input_fname = args[1]
-    if input_fname[-3:] == ".py":
-        input_fname = input_fname[:-3]
+    input_fname_origin = args[1]
+    input_fname, input_ext = os.path.splitext(input_fname_origin)
+    if not input_ext == ".py":
+        print("A file '{}' is not arrowed for the input file.".format(input_fname_origin)) 
+        print("Input should be a python file.")
+        sys.exit()
 except IndexError:
     input_fname = "input"
 
@@ -42,6 +45,7 @@ if __name__ == "__main__":
 
         print("-----")
         image.save_image()
+        shutil.copy(input_fname + ".py", image.save_dir + "/previous_input.py")
         if not image.exist_normpy:
             shutil.copy(os.path.dirname(__file__) + "/normalize.py", image.save_dir + "/")
         if not image.exist_rcountpy:

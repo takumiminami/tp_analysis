@@ -105,8 +105,6 @@ else:
     print("Error!! Check the variale 'save_fig_ext' in input. Its type should be 'str' or 'list'.")
     sys.exit()
 
-# exec("from {} import flip_parabola_flag".format(input_fname))
-# flip_flag = not flip_parabola_flag
 flip_flag = not try_import_flags("flip_parabola_flag")
 
 # ----- drawing on parabola ----- #
@@ -128,7 +126,7 @@ ek_axis_on_parabola_flag = try_import_flags("ek_axis_on_parabola")
 if ek_axis_on_parabola_flag:
     ek_indicate_flag = try_import_flags("ek_indicate")
     ek_indicate_offset_XY = try_import_params("ek_indicate_offset", [10, 10])
-    ek_indicate_fontsize_ = try_import_params("ek_indicate_fontsize", 9)
+    ek_indicate_fontsize_ = try_import_params("ek_indicate_fontsize", 12)
     ek_indicate_origin_offset_XY = try_import_params("ek_indicate_origin_offset", [0, 30])
 
 

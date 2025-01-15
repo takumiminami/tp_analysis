@@ -3,11 +3,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-import glob, os, re, sys
-import cv2
-
-sys.path.append("../")
-import platform
+import glob, os, re, sys, cv2, platform
 
 if platform.system() == "Darwin":
     plt.rcParams["font.family"] = "Helvetica"
@@ -28,10 +24,8 @@ ion_names = [
              "C6+(O8+)",
              ]
 
-original_file_extension = "gel"
-
 # ----- initialization ----- #
-from main import input_fname
+input_fname = "previous_input"
 exec("from {} import decimate_image".format(input_fname))
 if decimate_image:
     exec("from {} import cut_left_top, cut_right_down".format(input_fname))
@@ -45,16 +39,13 @@ ekmax = open("./max_ek.log", mode="w")
 # ----- functions ----- #
 def find_original():
     original_fname = cur_dir.split("/")[-1][8:]
-#    if "]" == original_fname[-1]:
-#        original_fname = original_fname[:-1]
 
-#    original = glob.glob("../{}*".format(original_fname))
-#    if (1 < len(original)):
-#        for fn in original:
-#            if fn[-4:] == "." + original_file_extension:
-#                original = fn
-#                break
-    _original = "../" + original_fname + "." + original_file_extension
+    for n, f in enumerate(file_names):
+        _fn, _ext = os.path.splitext(f)
+        if _fn == original_fname:
+            original_extension = _ext
+            break
+    _original = "../" + original_fname + original_extension
 
     return _original
 

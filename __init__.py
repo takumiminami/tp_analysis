@@ -33,6 +33,7 @@ Updates
 3.4.1   Add a function to set the Q/M values or ion name to indicate with vertical lines in the Q/M histogram
         Arrow to input from arbitrary named files
         Add a function to indicate the energy on the ek_axis in the parabola image
+        Set the main.py to copy the input file to the analysis directory as "previous_input.py"
 3.4.0   Omit ek-error from the plot
         Refine normalized.py in structure
 3.3.0   First version uploaded in Github
