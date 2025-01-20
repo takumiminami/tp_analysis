@@ -9,6 +9,11 @@ if [ "$argv" = "update" ]; then
     echo "update done"
 elif [ "$argv" = "install" ]; then
     cd $script_dir && git clone https://github.com/takumiminami/tp_analysis.git
+elif [ "$argv" = "uninstall" ]; then
+    echo "The scripts of tpana will be deleted."
+    read -p "Input y if you wish to delete all the scripts." flag
+    if [ "$flag" = "y" ]; then
+        cd $script_dir && git rm -rf . && cd .. && rm -rf tp_analysis
 elif [ "$argv" = "" ]; then
     python3 $script_dir/tp_analysis/main.py
 else
