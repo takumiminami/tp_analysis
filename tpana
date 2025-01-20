@@ -14,6 +14,7 @@ elif [ "$argv" = "uninstall" ]; then
     read -p "Input y if you wish to delete all the scripts." flag
     if [ "$flag" = "y" ]; then
         cd $script_dir && git rm -rf . && cd .. && rm -rf tp_analysis
+        echo "Uninstalliation completed"
     else
         echo "Aborted the uninstallation."
     fi
