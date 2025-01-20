@@ -8,7 +8,7 @@ Contact to the author (T. Minami, takumi.minami@eie.eng.osaka-u.ac.jp).
 ## For CLI
 ### Installation
 Execute ```$ git clone https://github.com/takumiminami/tp_analysis.git```.
-Make a symbolic linc in a directory with path to tp_analysis/tpana, then you can execute the script anywhere.
+Make a symbolic linc in a directory with path to tp_analysis/tpana, e.g. ```ln -s ${Installed_directory}/tp_analysis/tpana ${Directory_with_PATH}```, then you can execute the script anywhere.
 
 ### Execution
 Put the data and input.py in a directory.
