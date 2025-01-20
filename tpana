@@ -1,0 +1,17 @@
+#!/bin/bash
+set -Ce
+
+argv=${1:-}
+script_dir=$(dirname $(readlink -f $0))
+
+if [ "$argv" = "update" ]; then
+    cd $script_dir/tp_analysis && git pull  
+    echo "update done"
+elif [ "$argv" = "install" ]; then
+    cd $script_dir && git clone https://github.com/takumiminami/tp_analysis.git
+elif [ "$argv" = "" ]; then
+    python3 $script_dir/tp_analysis/main.py
+else
+    python3 $script_dir/tp_analysis/main.py $argv 
+fi
+

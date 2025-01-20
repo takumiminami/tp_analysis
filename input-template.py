@@ -80,8 +80,8 @@ if fit_flag:
     fit_ion = ["proton", unit_mass * 1, unit_charge * 1, "black"]
 else:
     wofit_cache_flag = False
-#    coefficient = 2.89
-    angle = 1.7e-3 * np.pi / 180  #7-3.1
+    coefficient = 2.89   # [1/m]
+    angle = 1.7e-3 * np.pi / 180   # [rad]
 
 # ----- scanning Q/M ----- #
 scan_qm_flag = False
