@@ -258,7 +258,7 @@ class Image:
                     _text_origin = "{:.0f}/{:.0f} [MeV]".format(ek_axis["charge"]/coulomb_u, ek_axis["mass"]/mass_u)
                 _ek_origin_X = ek_axis["origin"][1] + ek_indicate_origin_offset_XY[1]
                 _ek_origin_Y = ek_axis["origin"][0] + ek_indicate_origin_offset_XY[0]
-                self.ax.annotate(_text_origin, xy=(_ek_origin_Y, _ek_origin_X), xycoords="data", color=ek_axis["color"], fontsize=ek_indicate_fontsize_)
+                self.ax.annotate(_text_origin, xy=(_ek_origin_Y, _ek_origin_X), xycoords="data", color=ek_axis["color"], fontsize=ek_indicate_fontsize_, horizontalalignment="center", verticalalignment="top")
 
                 for _n, _ek_mev in enumerate(ek_axis["ek_mev"]):
                     _text = "{}".format(_ek_mev)
@@ -267,7 +267,7 @@ class Image:
                     else:
                         _indicate_Y = XY_axis_[_n, 1]+ek_indicate_offset_XY[0]
                     _indicate_X = XY_axis_[_n, 0]-ek_indicate_offset_XY[1]
-                    self.ax.annotate(_text, xy=(_indicate_Y, _indicate_X), xycoords="data", color=ek_axis["color"], fontsize=ek_indicate_fontsize_)
+                    self.ax.annotate(_text, xy=(_indicate_Y, _indicate_X), xycoords="data", color=ek_axis["color"], fontsize=ek_indicate_fontsize_, horizontalalignment="center", verticalalignment="center")
 
     def init_parabola(self):
         length_params = len(img_scale_params)

@@ -132,9 +132,9 @@ ek_axis_on_parabola = True
 if ek_axis_on_parabola:
     number_of_axis = 1
     ek_indicate = True
-    ek_indicate_offset = [10, 10]
+    ek_indicate_offset = [30, 0]
     ek_indicate_fontsize = 9
-    ek_indicate_origin_offset = [-50, 30]
+    ek_indicate_origin_offset = [0, 20]
     ek_axis_1 = {"ek_mev": [0.4, 1, 5, 20],  # MeV (not MeV/u)
                  "mass": unit_mass * 1,
                  "charge": unit_charge * 1,
