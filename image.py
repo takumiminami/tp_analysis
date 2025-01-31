@@ -263,10 +263,10 @@ class Image:
                 for _n, _ek_mev in enumerate(ek_axis["ek_mev"]):
                     _text = "{}".format(_ek_mev)
                     if flip_flag:   
-                        _indicate_Y = XY_axis_[_n, 1]-ek_indicate_offset_XY[1]
+                        _indicate_Y = XY_axis_[_n, 1]-ek_indicate_offset_XY[0]
                     else:
-                        _indicate_Y = XY_axis_[_n, 1]+ek_indicate_offset_XY[1]
-                    _indicate_X = XY_axis_[_n, 0]-ek_indicate_offset_XY[0]
+                        _indicate_Y = XY_axis_[_n, 1]+ek_indicate_offset_XY[0]
+                    _indicate_X = XY_axis_[_n, 0]-ek_indicate_offset_XY[1]
                     self.ax.annotate(_text, xy=(_indicate_Y, _indicate_X), xycoords="data", color=ek_axis["color"], fontsize=ek_indicate_fontsize_)
 
     def init_parabola(self):
