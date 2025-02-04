@@ -3,7 +3,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-import platform, os, re, sys, glob, cv2, datetime
+import platform, os, re, sys, glob, cv2, datetime, warnings
 
 from copy import deepcopy as dc
 from datetime import datetime as dt
@@ -306,7 +306,9 @@ class Image:
         axcb = figcb.add_subplot()
         pos = axcb.get_position()
         axcb.set_position([pos.x0, pos.y0, 0.07, pos.height])
-        cb = figcb.colorbar(_fr, cax=axcb)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            cb = figcb.colorbar(_fr, cax=axcb)
 #        cb.set_label("color scale")
         for ext in parabola_ext:
 #            figcb.tight_layout()
