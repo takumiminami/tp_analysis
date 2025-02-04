@@ -61,12 +61,12 @@ for n, f in enumerate(file_list):
 
     if ion_name == "proton":
         ek_max = 30   # maximum but slightly below the cutoff
-        # limit = 30
         ek_min = 0.8   # this should be exactly minimum energy to be normalized 
+        label = "p"
     elif ion_name == "C6+(O8+)":
         ek_max = 60
-        # limit = 30
         ek_min = 12
+        label = "C^{6+}"
 
     ek = data[:, 0] * 1e-6
     dek = data[:, 1] * 1e-6
@@ -109,11 +109,11 @@ for n, f in enumerate(file_list):
 #    ax.errorbar(save_data[:, 0], save_data[:, 1], xerr=save_data[:, 2], yerr=save_data[:, 3], capsize=1.8, elinewidth=0.5)
     ax.errorbar(save_data[:, 0], save_data[:, 1], yerr=save_data[:, 3], capsize=1.8, elinewidth=0.5)
     ax.set_yscale("log")
-    ax.set_xlabel("$E_k$ [MeV]")
+    ax.set_xlabel(r"$\varepsilon_{\rm " + label + "}$ [MeV]")
     if strdn == 1:
-        ax.set_ylabel("$f\ (E_k)$ [/MeV]")
+        ax.set_ylabel(r"$f\ (\varepsilon_{\rm " + label + "})$ [MeV$^{-1}$]")
     else:
-        ax.set_ylabel("$f\ (E_k)$ [/MeV/sr]")
+        ax.set_ylabel(r"$f\ (\varepsilon_{\rm " + label + "})$ [MeV$^{-1}$sr$^{-1}$]")
     fig.tight_layout()
     fig.savefig("fn_{}.png".format(ion_name))
     ax.cla()
