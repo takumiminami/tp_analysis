@@ -162,7 +162,7 @@ class Histogram:
         ax.bar(self.qm, self.number, label="ion", alpha=0.7, align="center", width=1/self.length)
         if bg_flag:
             ax.bar(self.qm, self.bg_number, label="background", alpha=0.7, align="center", width=1/self.length)
-        ax.set_xlabel(r"$Q/M$ []")
+        ax.set_xlabel(r"$Q/M$")
         ax.set_ylabel(r"$N$ [a.u.]")
 
         from configurations import indication_QM_flag
