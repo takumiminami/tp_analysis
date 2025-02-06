@@ -155,7 +155,8 @@ class Histogram:
     def save_hist(self, save_dir_root):
         save_datas = np.array((self.qm, self.number, self.bg_number)).T
         # save_datas = np.sort(save_datas_, axis=0)
-        np.savetxt(save_dir_root + "/ion_number.txt", save_datas, header="q/m []  number []  bg_number []")
+        np.savetxt(save_dir_root + "/qm_histogram.txt", save_datas, header="q/m []  number []  bg_number []")
+#        np.savetxt(save_dir_root + "/ion_number.txt", save_datas, header="q/m []  number []  bg_number []")
 
         fig, ax = plt.subplots()
         ax.bar(self.qm, self.number, label="ion", alpha=0.7, align="center", width=1/self.length)
@@ -181,7 +182,7 @@ class Histogram:
             ax.set_yscale("log")
         ax.legend()
         fig.tight_layout()
-        fig.savefig(save_dir_root + "/histogram.".format(save_fig_ext))
+        fig.savefig(save_dir_root + "/qm_histogram.".format(save_fig_ext))
         plt.close()
         print("saving histogram...")
 
@@ -218,12 +219,25 @@ def get_value(spectra_: Spectra, image_: Image):
 
 def get_qm_hist(image_, coef_):
     print("-----")
-    ion_numbers_file = image_.save_dir + "/ion_number.txt"
+    ion_numbers_file = image_.save_dir + "/qm_histogram.txt"
+    old_ion_numbers_file = image_.save_dir + "/ion_number.txt"
     if use_cache_qm_flag & os.path.exists(ion_numbers_file):
         date = datetime.datetime.fromtimestamp(os.path.getmtime(ion_numbers_file))
         print("Calculating histogram had already done before.")
         print("Last done date : {}".format(date))
         ion_numbers = np.genfromtxt(ion_numbers_file, skip_header=1)
+        hist = Histogram(len(ion_numbers[:, 0]))
+        hist.qm = ion_numbers[:, 0]
+        hist.number = ion_numbers[:, 1]
+        if len(ion_numbers[0, :] == 3):
+            hist.bg_number = ion_numbers[:, 2]
+    elif use_cache_qm_flag & os.path.exists(old_ion_numbers_file):
+        date = datetime.datetime.fromtimestamp(os.path.getmtime(old_ion_numbers_file))
+        print("Old file (ion_number.txt) exist.")
+        print("Last done date : {}".format(date))
+        print("Referring this file and save it with a newer name (qm_histogram.txt).")
+        print("The file name of qm-histogram is changed since Ver.3.4.2")
+        ion_numbers = np.genfromtxt(old_ion_numbers_file, skip_header=1)
         hist = Histogram(len(ion_numbers[:, 0]))
         hist.qm = ion_numbers[:, 0]
         hist.number = ion_numbers[:, 1]

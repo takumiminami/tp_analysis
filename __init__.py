@@ -3,10 +3,10 @@
 
 __author__ = "Takumi Minami"
 __year__ = "2025"
-__date__ = "15 January"
+__date__ = "6 February"
 __credits__ = ["Takumi Minami"]
 __license__ = "Private Domain"
-__version__ = "3.4.1"
+__version__ = "3.4.2"
 __maintainer__ = "Takumi Minami"
 __email__ = "takumi.minami@eie.eng.osaka-u.ac.jp"
 __copyright__ = "Copyright (C), {}, {}".format(__year__, __author__)
@@ -30,6 +30,7 @@ sys.path.append(os.getcwd())
 
 """
 Updates
+3.4.2   Change the file name to save qm-histogram (new: qm-histogram.txt, old: ion_number.txt)
 3.4.1   Add a function to set the Q/M values or ion name to indicate with vertical lines in the Q/M histogram
         Arrow to input from arbitrary named files
         Add a function to indicate the energy on the ek_axis in the parabola image
