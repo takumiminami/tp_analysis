@@ -16,6 +16,8 @@ try:
 except IndexError:
     input_fname = "input"
 
+# input_fname = "input_jkaren_tps2"
+
 if __name__ == "__main__":
     try:
         exec("from {} import *".format(input_fname))
