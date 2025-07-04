@@ -3,7 +3,7 @@ The analysis code for Thomson parabola spectrometer (TPS).
 The approval file is an image data obtained with IP, MCP, e.t.c.
 
 ## Lisence
-Contact to the author (T. Minami, takumi.minami@eie.eng.osaka-u.ac.jp).
+Contact to the author (T. Minami, takumi.minami.9360@gmail.com).
 
 ## For CLI
 ### Installation
@@ -20,7 +20,7 @@ You can execute with ```$ tpana laser_shot5.py```.
 ```$ tpana update``` will automatically update the codes from github if there are available updates.
 
 ### Uninstallation
-Execute ```$ tpana uninstall``, then you will be demanded to input "y" to verify the uninstallation.
+Execute ```$ tpana uninstall```, then you will be demanded to input "y" to verify the uninstallation.
 The directory "tp_analysis" and all the files in the directory will be removed automatically.
 
 ## For Visual studio code (VSC), Anaconda, and e.t.c.
