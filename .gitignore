@@ -1,0 +1,62 @@
+# ----------------------------------------
+# Ignore everything by default
+# ----------------------------------------
+*
+*/
+
+# ----------------------------------------
+# Explicitly allow only tracked or important files (expand as needed)
+# Git keeps already tracked files regardless of .gitignore,
+# but it's safer to whitelist them explicitly
+# ----------------------------------------
+
+!.gitignore
+!README.md
+!__init__.py
+!configurations.py
+!define_center.py
+!functions.py
+!image.py
+!input-template.py
+!main.py
+!normalize.py
+!plt_r-count.py
+!spectra.py
+!tp_analysis.py
+!tpana
+
+# Explicitly allow important subdirectories (add more if necessary)
+#!test/
+#!old/
+
+# ----------------------------------------
+# Common unnecessary files to ignore
+# ----------------------------------------
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.log
+*.bak
+*.tmp
+*.npy
+*.csv
+*.json
+*.pickle
+
+# raw data and generated images
+*.tif
+*.tiff
+*.gel
+*.png
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# VSCode or other IDEs
+.vscode/
+.idea/
+

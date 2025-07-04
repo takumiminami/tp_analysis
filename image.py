@@ -47,7 +47,7 @@ class Image:
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
 
-        self.fig = plt.figure(figsize=(self.image.shape[1] * 3 / dpi, self.image.shape[0] * 3 / dpi))
+        self.fig = plt.figure(figsize=(self.image.shape[1] * dpi / 1e4, self.image.shape[0] * dpi / 1e4))
         self.ax = self.fig.add_subplot(1, 1, 1)
         self.init_parabola()
 

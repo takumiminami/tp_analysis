@@ -126,7 +126,7 @@ for n, f in enumerate(file_list):
         x_not = data[:, 4][~ek_range]
         y_not = data[:, 5][~ek_range]
         image = cv2.imread(original, cv2.IMREAD_UNCHANGED)
-        fig, ax = plt.subplots(figsize=(image.shape[1] * 3 / dpi, image.shape[0] * 3 / dpi))
+        fig, ax = plt.subplots(figsize=(image.shape[1] * dpi / 1e4, image.shape[0] * dpi / 1e4))
         ax.imshow(image, cmap="Reds")
         ax.scatter(x_ - 10, y_, s=1, c="green", marker=".", label="normalized area")
         ax.scatter(x_not - 5, y_not, s=1, c="blue", marker=".", label="eliminated area")

@@ -29,7 +29,7 @@ colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e3
 #          matplotlib-default color cycle
 
 # ----- parameters ----- #
-data_name_list = ["sp_proton.txt",
+data_name_list = ["sp_proton_eklog.txt",
                   "sp_C6+(O8+).txt",
                  ]
 

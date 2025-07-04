@@ -96,7 +96,7 @@ if qm_indication_flag:
     ]
 
 # ----- output ----- #
-dpi = 300
+dpi = 100
 raw_color = "viridis"
 save_fig_ext = "png"
 draw_para_width = 10
